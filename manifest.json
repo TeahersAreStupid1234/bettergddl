@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "BetterGDDL",
+    "version": "1.0",
+    "description": "Improves GDDL with functions such as removing outliers or adjusting tier rounding. 99% made with AI.",
+    "icons": {
+      "128": "icon128.png"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "128": "icon128.png"
+      }
+    },
+    "permissions": ["storage"],
+    "content_scripts": [
+      {
+        "matches": ["https://gdladder.com/level/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }

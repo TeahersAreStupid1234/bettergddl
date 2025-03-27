@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GD Ladder Rating Adjuster</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 15px;
+      width: 300px;
+      background-color: #2d3748;
+      color: #e2e8f0;
+    }
+    h1 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #f6e05e;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px; /* adjust font size if needed */
+    }
+    /* Scale the checkbox for better visual balance */
+    input[type="checkbox"] {
+      transform: scale(1.2);
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+    select,
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #4a5568;
+      border-radius: 4px;
+      background-color: #1a202c;
+      color: #e2e8f0;
+    }
+    button {
+      background-color: #f6ad55;
+      border: none;
+      color: #1a202c;
+      padding: 8px 15px;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ed8936;
+    }
+    .status {
+      margin-top: 10px;
+      font-style: italic;
+    }
+    .tip {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #cbd5e0;
+    }
+  </style>
+</head>
+<body>
+  <h1>GD Ladder Rating Adjuster</h1>
+  
+  <div class="form-group">
+    <input type="checkbox" id="toggleOutlier">
+    <label for="toggleOutlier">Enable Outlier Removal</label>
+  </div>
+  
+  <div class="form-group">
+    <label for="roundingMethod">Rounding Method for Tier Number:</label>
+    <select id="roundingMethod">
+      <option value="round">Round (default)</option>
+      <option value="floor">Floor</option>
+      <option value="ceil">Ceil</option>
+      <option value="custom">Custom</option>
+    </select>
+  </div>
+  
+  <div class="form-group">
+    <label for="customThreshold">Custom Rounding Threshold (0–1):</label>
+    <input type="number" id="customThreshold" min="0" max="1" step="0.01" value="0.78">
+    <span style="font-size:10px; color:#cbd5e0;">(e.g. 0.78 rounds 5.78 up to 6)</span>
+  </div>
+  
+  <button id="save">Save Settings</button>
+  
+  <div id="status" class="status"></div>
+  
+  <div class="tip">
+    <p>Toggle outlier removal and select how the tier number is computed.</p>
+    <p>If using "Custom" rounding, the displayed tier will round up only if the fraction is greater than or equal to the threshold.</p>
+    <p>Refresh the GD Ladder page after changing settings.</p>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
